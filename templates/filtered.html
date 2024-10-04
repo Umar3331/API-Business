@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Filtered Product</title>
+</head>
+<body>
+    <h1>Filtered Results for: {{ selected_product }}</h1>
+    
+    <ul>
+    {% for product in products %}
+        <li>{{ product[0] }} - {{ product[1] }}</li>
+    {% endfor %}
+    </ul>
+
+    <a href="/">Back to product selection</a>
+</body>
+</html>

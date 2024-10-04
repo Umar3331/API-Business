@@ -1,0 +1,25 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"  # Map port 5000 on the container to port 5000 on the host
+    volumes:
+      - ./data:/data  # Shared volume for database
+    depends_on:
+      - db
+    environment:
+      - FLASK_ENV=development  # Enable Flask debug mode
+
+  scraper:
+    build: .
+    command: python scraper.py  # Run the scraper
+    volumes:
+      - ./data:/data  # Shared volume for database
+    depends_on:
+      - db
+
+  db:
+    image: "nouchka/sqlite3"
+    volumes:
+      - ./data:/data  # Shared volume for database persistence

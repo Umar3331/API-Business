@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Selector</title>
+</head>
+<body>
+    <h1>Select a Computer</h1>
+    <form action="/filter" method="POST">  <!-- Ensure method is POST and action is /filter -->
+        <label for="product">Product:</label>
+        <select name="product" id="product">
+            {% for product in products %}
+                <option value="{{ product[0] }}">{{ product[0] }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
